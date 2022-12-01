@@ -1,8 +1,8 @@
 require 'test_helper'
 
-class ProtoaprControllerTest < ActionDispatch::IntegrationTest
+class ProtoaprsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get protoapr_index_url
+    get protoaprs_index_url
     assert_response :success
   end
 

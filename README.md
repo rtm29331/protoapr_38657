@@ -1,24 +1,42 @@
-# README
+## users テーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+| Column             | Type   | null        |UNIQUE   |　　
+| ------------------ | ------ | ------------|---------|
+| name               | string | null: false |true     |
+| email              | string | null: false |false    |
+| encrypted_password | string | null: false |false    |
+| profile            | text   | null: false |false    |
+| occupation         | text   | null: false |false    |
+| position           | text   | null: false |false    |
 
-Things you may want to cover:
+### Association
 
-* Ruby version
+- has_many :comments
+- has_many :protoaprs
 
-* System dependencies
 
-* Configuration
+## comments テーブル
 
-* Database creation
+| Column    | Type       | Options                        |
+| ------    | ---------- | ------------------------------ |
+| text      | text       | null: false, foreign_key: true |
+| room      | references |                                |
+| prototype | references |                                |
+### Association
 
-* Database initialization
+- belongs_to :protoaprs
+- belongs_to :user
 
-* How to run the test suite
+## protoaprs テーブル
 
-* Services (job queues, cache servers, search engines, etc.)
+| Column     | Type       | Options                        |
+| -----------| ---------- | ------------------------------ |
+| title      | string     | null: false,                   |
+| user       | references | null: false, foreign_key: true |
+| catch.copy | text       | null: false,                   |
+| concept    | text       | null: false,                   |
 
-* Deployment instructions
+### Association
 
-* ...
+belongs_to :user
+has_many :comments
